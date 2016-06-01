@@ -1,0 +1,14 @@
+import java.io.File;
+import javafx.scene.paint.Color;
+/*
+Represents a dash in the Morse code system
+*/
+public class Dash extends MorseSymbol
+{    
+    /*No arg constructor that passes width, height, color and a reference to a 
+    file with sound corresponding to symbol to super constructor*/
+    public Dash(File fileAudio)
+    {
+        super(20, 10, Color.BLACK, fileAudio);
+    }
+}
