@@ -1,6 +1,11 @@
+package morse;
 
+
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Scanner;
 /*
@@ -27,8 +32,9 @@ public class MorseTree
     {
         try
         {
-            File file = new File("BuildTree.txt");
-            Scanner scanner = new Scanner(file);
+            String resource = "resources/BuildTree.txt";
+            InputStream inStream = this.getClass().getResourceAsStream(resource);
+            Scanner scanner = new Scanner(new BufferedReader(new InputStreamReader(inStream)));
             while (scanner.hasNextLine())
             {
                 String line = scanner.nextLine();
@@ -39,9 +45,9 @@ public class MorseTree
                 add(node);
             }
         }
-        catch(FileNotFoundException ex)
+        catch(Exception ex)
         {
-            System.err.println(ex.getMessage());
+            ex.printStackTrace();
         }
     }
     
@@ -154,11 +160,11 @@ public class MorseTree
             char symbol = codeable.charAt(i);
             if (symbol == DASH)
             {
-                symbols.add(new Dash(new File("dash.mp3")));
+                symbols.add(new Dash("resources/dash.mp3"));
             }
             else if (symbol == DOT)
             {
-                symbols.add(new Dot(new File("dot.mp3")));
+                symbols.add(new Dot("resources/dot.mp3"));
             }
             else
             {

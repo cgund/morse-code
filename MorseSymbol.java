@@ -1,5 +1,7 @@
+package morse;
 
-import java.io.File;
+
+import java.net.URL;
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.MediaException;
 import javafx.scene.paint.Color;
@@ -11,21 +13,18 @@ with the symbol
 */
 public abstract class MorseSymbol extends Rectangle
 {
-    private File file;
-    private String filePath;
     private AudioClip audio;
 
-    public MorseSymbol(double width, double height, Color color, File fileAudio)
+    public MorseSymbol(double width, double height, Color color, String resourceAudio)
     {
         super(width, height);
         super.setFill(color);
         try
         {
-            if (fileAudio != null)
+            if (resourceAudio != null)
             {
-                this.file = fileAudio;
-                filePath = this.file.toURI().toString();
-                audio = new AudioClip(filePath);                
+                URL resource = this.getClass().getResource(resourceAudio);
+                audio = new AudioClip(resource.toExternalForm());                
             }
         }
         catch(NullPointerException | IllegalArgumentException | MediaException ex)

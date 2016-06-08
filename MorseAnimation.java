@@ -1,3 +1,5 @@
+package morse;
+
 
 import java.util.ArrayList;
 import javafx.animation.KeyFrame;

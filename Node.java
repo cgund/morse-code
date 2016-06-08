@@ -1,3 +1,5 @@
+package morse;
+
 /*
 Class to represent a letter-symbol pair and links to two children Nodes
 */

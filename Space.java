@@ -1,3 +1,5 @@
+package morse;
+
 
 import javafx.scene.paint.Color;
 
